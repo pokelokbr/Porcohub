@@ -1,0 +1,21 @@
+-- Create the ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "ScreenGui"
+screenGui.Parent = game.Players.LocalPlayer.PlayerGui
+
+-- Create the ImageLabel for the image with aspect ratio preservation
+local Page = Instance.new("ImageLabel")
+Page.Name = "Page"
+Page.Parent = screenGui
+Page.BackgroundTransparency = 1 -- Make it fully transparent, as the black background will be behind it
+Page.Position = UDim2.new(0.5, -700, 0.45, -300) -- Move the image slightly up
+Page.Size = UDim2.new(0, 1500, 0, 1500) -- Increase the size while preserving aspect ratio
+Page.Image = "http://www.roblox.com/asset/?id=" .. tostring(13769108503)
+Page.SizeConstraint = Enum.SizeConstraint.RelativeYY -- Preserve aspect ratio
+
+-- Make the script wait for a while to keep the image visible
+wait(10)
+
+-- Clean up the ScreenGui after a delay (you can adjust the delay as needed)
+wait(5)
+screenGui:Destroy()
