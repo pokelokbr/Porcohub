@@ -1,0 +1,349 @@
+-- Create the ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "ScreenGui"
+screenGui.Parent = game.Players.LocalPlayer.PlayerGui
+
+-- Create the ImageLabel and set its properties
+local Page = Instance.new("ImageLabel")
+Page.Name = "Page"
+Page.Parent = screenGui
+Page.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Page.BackgroundTransparency = 0 -- Adjusted to make it fully opaque
+Page.Position = UDim2.new(0, 0, 0, 0)
+Page.Size = UDim2.new(1, 0, 1, 0)
+Page.Image = "http://www.roblox.com/asset/?id=" .. tostring(15623911000)
+
+-- Create the first rectangle
+local rectangle1 = Instance.new("Frame")
+rectangle1.Name = "Rectangle1"
+rectangle1.Parent = screenGui
+rectangle1.BackgroundColor3 = Color3.fromRGB(169, 169, 169) -- Gray color
+rectangle1.BackgroundTransparency = 0.5 -- Adjusted to make it more transparent
+rectangle1.Size = UDim2.new(0, 150, 0, 30) -- Adjust size as needed
+rectangle1.Position = UDim2.new(0.5, -75, 0.85, 0) -- Adjust position as needed
+
+-- Create the second rectangle
+local rectangle2 = Instance.new("Frame")
+rectangle2.Name = "Rectangle2"
+rectangle2.Parent = screenGui
+rectangle2.BackgroundColor3 = Color3.fromRGB(169, 169, 169) -- Gray color
+rectangle2.BackgroundTransparency = 0.5 -- Adjusted to make it more transparent
+rectangle2.Size = UDim2.new(0, 150, 0, 30) -- Adjust size as needed
+rectangle2.Position = UDim2.new(0.5, -75, 0.9, 0) -- Adjust position as needed
+
+-- Your existing code for the bounty display
+local Current = Instance.new("TextLabel")
+Current.Name = "CurrentLabel"
+Current.Parent = rectangle1
+Current.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Current.Size = UDim2.new(1, 0, 1, 0)
+Current.Text = "Bounty Atual"
+Current.Font = Enum.Font.SourceSans
+Current.TextSize = 14
+Current.TextColor3 = Color3.fromRGB(0, 0, 0)
+
+local Bounty = tostring(game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value)
+local sub = string.sub 
+local len = string.len
+spawn(function()
+    while wait() do
+        pcall(function()
+            if len(Bounty) == 4 then
+                Bounty1 = sub(Bounty,1,1).."."..sub(Bounty,2,3).."K"
+            elseif len(Bounty) == 5 then
+                Bounty1 = sub(Bounty,1,2).."."..sub(Bounty,3,4).."K"
+            elseif len(Bounty) == 6 then
+                Bounty1 = sub(Bounty,1,3).."."..sub(Bounty,4,5).."K"
+            elseif len(Bounty) == 7 then
+                Bounty1 = sub(Bounty,1,1).."."..sub(Bounty,2,3).."M"
+            elseif len(Bounty) == 8 then
+                Bounty1 = sub(Bounty,1,2).."."..sub(Bounty,3,4).."M"
+            elseif len(Bounty) <= 3 then
+                Bounty1 = Bounty
+            end
+            if tonumber(Bounty) == 25000000 then
+                Current.Text = "Bounty Atual : "..Bounty1.." [ Max ]"
+            elseif tonumber(Bounty) < 25000000 then
+                Current.Text = "Bounty Atual : "..Bounty1
+            end
+        end)
+    end
+end)
+
+-- Create the label for the Earned information
+local Earn = Instance.new("TextLabel")
+Earn.Name = "EarnedLabel"
+Earn.Parent = rectangle2
+Earn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Earn.Size = UDim2.new(1, 0, 1, 0)
+Earn.Text = "Quanto eu ganhei:"
+Earn.Font = Enum.Font.SourceSans
+Earn.TextSize = 14
+Earn.TextColor3 = Color3.fromRGB(0, 0, 0)
+
+-- Your existing code for the Earned display
+local OldBounty = game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value
+local Earned = tostring(game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value - OldBounty)
+spawn(function()
+    while wait() do
+        pcall(function()
+            if len(Earned) == 4 then
+                Earned1 = sub(Earned,1,1).."."..sub(Earned,2,3).."K"
+            elseif len(Earned) == 5 then
+                Earned1 = sub(Earned,1,2).."."..sub(Earned,3,4).."K"
+            elseif len(Earned) == 6 then
+                Earned1 = sub(Earned,1,3).."."..sub(Earned,4,5).."K"
+            elseif len(Earned) == 7 then
+                Earned1 = sub(Earned,1,1).."."..sub(Earned,2,3).."M"
+            elseif len(Earned) == 8 then
+                Earned1 = sub(Earned,1,2).."."..sub(Earned,3,4).."M"
+            elseif len(Earned) <= 3 then
+                Earned1 = Earned
+            end
+            Earn.Text = "Quanto eu ganhei: "..tonumber(Earned1)
+        end)
+    end
+end)
+
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/pokelokbr/Porcohub/main/v91'))() 
+
+getgenv().Setting = {
+    ["Team"] = "Pirates", --Marines,Pirates
+    ["Webhook"] = {
+        ["Enabled"] = true,
+        ["Url Webhook"] = "Webhook Here", --Your Url
+    },
+    ["Misc"] = {
+        ["AutoBuyRandomandStoreFruit"] = true,
+        ["AutoBuySurprise"] = true,
+    },
+    ["SafeZone"] = {
+        ["Enable"] = true,
+        ["LowHealth"] = 4500,
+        ["MaxHealth"] = 5000,
+        ["Teleport Y"] = 2000
+    },
+    ["Race V4"] = {
+        ["Enable"] = true,
+    },
+    ["Invisible"] = false,
+    ["White Screen"] = false,
+    AutoConfigMelee = true,
+    AutoConfigSword = true,
+    AutoConfigFruit = true,
+    ["LimitServerHop"] ={
+        Enable = false,
+        Time = 600,
+    },
+    ["Position Config"] = {
+        Mode = "Default",-- You Can Create Your Own Mode By Making An Index In The Table Like Custom
+        Tween = true, -- If false then it will teleport when near target
+        SkyTween = false, -- Tweening In The Sky Till You Are Near The Player, Recommended For Using Gun Method
+        Spin = false,
+        ["Default"] = {
+            DistanceFromPlayer = {
+                x = 0, y = 0, z = 0,
+            }
+        },
+        ["Custom"] = {
+            DistanceFromPlayer = {
+                x = 0, y = 3, z = 0
+            }
+        }
+    },
+    ["Panel"] = {
+        ["Enabled"] = false,
+        ["IgnoreSelfChat"] = false,
+    },
+    ["ChatKill"] = {
+        Enable = true,
+        Chat = {
+            ""
+        },
+    },
+    ["Mention"] = {
+        ["Enable"] = false,
+        ["Id"] = "everyone", -- You Can Replace With Your Id (not your discord Name)
+        ["EveryBounty"] = 10000,
+    },
+    ["FpsLock"] = {
+        ["Enable"] = true,
+        ["Cap"] = 30,
+    },
+    ["LockBounty"] = {
+        ["Enable"] = true,
+        ["Cap"] = 30000000,
+    },
+    ["Click"] = {
+        ["Enable"] = true,
+        ["FastClick"] = true,
+        ["OnLowHealthDisable"] = false,
+        ["LowHealth"] = 3000,
+    },
+    ["Misc"] = {
+        ["AutoBuyRandomandStoreFruit"] = true,
+    },
+    ["Invisible"] = false, -- Self Explain
+    ["IgnoreFriends"] = false, --Server Hop When Your friends in your server
+    ["GunMethod"] = false, --Use Melee,Gun Will automaticly disable invisible for things
+    ["GunMethodSetting"] = {
+        LessSusKillTest=true,
+        StartHealth = 2000,
+        waittime=10,
+        EndHealth = 4000,
+    },
+   AutoConfigMelee = true,
+    AutoConfigSword = true,
+    AutoConfigFruit = true,
+    ["LimitServerHop"] ={
+        Enable = false,
+        Time = 600,
+    },
+    ["Position Config"] = {
+        Mode = "Default",-- You Can Create Your Own Mode By Making An Index In The Table Like Custom
+        Tween = true, -- If false then it will teleport when near target
+        SkyTween = false, -- Tweening In The Sky Till You Are Near The Player, Recommended For Using Gun Method
+        Spin = false,
+        ["Default"] = {
+            DistanceFromPlayer = {
+                x = 0, y = 0, z = 0,
+            }
+        },
+        ["Custom"] = {
+            DistanceFromPlayer = {
+                x = 0, y = 3, z = 0
+            }
+        }
+    },
+    ["Panel"] = {
+        ["Enabled"] = false,
+        ["IgnoreSelfChat"] = false,
+    },
+    ["ChatKill"] = {
+        Enable = true,
+        Chat = {
+            "MUITO FÁCIL KKK"
+        },
+    },
+    ["Mention"] = {
+        ["Enable"] = false,
+        ["Id"] = "everyone", -- You Can Replace With Your Id (not your discord Name)
+        ["EveryBounty"] = 10000,
+    },
+    ["FpsLock"] = {
+        ["Enable"] = true,
+        ["Cap"] = 30,
+    },
+    ["LockBounty"] = {
+        ["Enable"] = true,
+        ["Cap"] = 30000000,
+    },
+    ["Click"] = {
+        ["Enable"] = true,
+        ["FastClick"] = true,
+        ["OnLowHealthDisable"] = false,
+        ["LowHealth"] = 3000,
+    },
+    ["Misc"] = {
+        ["AutoBuyRandomandStoreFruit"] = true,
+        ["AutoBuySurprise"] = true,
+    },
+    ["Invisible"] = true, -- Self Explain
+    ["IgnoreFriends"] = true, --Server Hop When Your friends in your server
+    ["GunMethod"] = false, --Use Melee,Gun Will automaticly disable invisible for things
+    ["GunMethodSetting"] = {
+        LessSusKillTest=true,
+        StartHealth = 2000,
+        waittime=10,
+        EndHealth = 4000,
+    },
+    ["SpamSkill"] = false, -- Will use all skills as fast as possbile ignore holding skills
+    ["Weapons"] = { -- Select Weapon, Self Explain
+        ["Melee"] = {
+            ["Enable"] = true,
+            ["Delay"] = 3,
+            ["Skills"] = {
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+            [ "X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+
+                ["C"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+            },
+        },
+        ["Blox Fruit"] = {
+            ["Enable"] = true,
+            ["Delay"] = 4,
+            ["Skills"] = {
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+                ["X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+
+                ["C"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+                ["V"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+                ["F"] = {
+                    ["Enable"] = false,
+                    ["HoldTime"] = 0,
+                },
+            },
+        },
+        ["Sword"] = {
+            ["Enable"] = false,
+            ["Delay"] = 2,
+            ["Skills"] = {
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 1,
+                },
+                ["X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+            },
+        },
+        ["Gun"] = {
+            ["Enable"] = false,
+            ["Delay"] = 0,
+            ["Skills"] = {
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 1,
+                },
+                ["X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+            },
+        },
+    }
+}
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+spawn(function()
+	while wait() do
+			game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+				if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+					game:GetService("TeleportService"):Teleport(game.PlaceId)
+				end
+			end)
+		end
+	end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BountyShit.lua"))()
