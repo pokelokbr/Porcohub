@@ -1,0 +1,88 @@
+-- Create the ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "ScreenGui"
+screenGui.Parent = game.Players.LocalPlayer.PlayerGui
+
+-- Create the ImageLabel for the square image
+local Square = Instance.new("ImageLabel")
+Square.Name = "Square"
+Square.Parent = screenGui
+Square.BackgroundTransparency = 0.5
+Square.Position = UDim2.new(0.5, -150, 0.5, -150)
+Square.Size = UDim2.new(0, 300, 0, 300)
+Square.Image = "http://www.roblox.com/asset/?id=" .. tostring(15498317188)
+Square.SizeConstraint = Enum.SizeConstraint.RelativeYY -- Preserve aspect ratio
+
+-- Create the Farm button
+local farmButton = Instance.new("TextButton")
+farmButton.Name = "FarmButton"
+farmButton.Parent = Square
+farmButton.BackgroundColor3 = Color3.fromRGB(169, 169, 169) -- Gray color for the Farm button
+farmButton.BackgroundTransparency = 0.5 -- Semi-transparent
+farmButton.Size = UDim2.new(0, 140, 0, 40)
+farmButton.Position = UDim2.new(0.02, 0, 0.85, 0)
+farmButton.Text = "Farm"
+farmButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+farmButton.MouseButton1Click:Connect(function()
+    print("Farm button clicked!")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/pokelokbr/Porcohub/main/v94"))()
+end)
+
+-- Create the PVP button
+local pvpButton = Instance.new("TextButton")
+pvpButton.Name = "PVPButton"
+pvpButton.Parent = Square
+pvpButton.BackgroundColor3 = Color3.fromRGB(169, 169, 169) -- Gray color for the PVP button
+pvpButton.BackgroundTransparency = 0.5 -- Semi-transparent
+pvpButton.Size = UDim2.new(0, 140, 0, 40)
+pvpButton.Position = UDim2.new(0.51, 0, 0.85, 0)
+pvpButton.Text = "PVP"
+pvpButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+pvpButton.MouseButton1Click:Connect(function()
+    print("PVP button clicked!")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/pokelokbr/Porcohub/main/pvp183"))()
+end)
+
+-- Create the Close button
+local closeButton = Instance.new("TextButton")
+closeButton.Name = "CloseButton"
+closeButton.Parent = Square
+closeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Red color for the Close button
+closeButton.BackgroundTransparency = 0.5 -- Semi-transparent
+closeButton.Size = UDim2.new(0, 30, 0, 30)
+closeButton.Position = UDim2.new(0.90, 0, 0.00, 0)
+closeButton.Text = "X"
+closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeButton.MouseButton1Click:Connect(function()
+    Square:Destroy() -- Close the panel by destroying it
+end)
+
+-- Make the console movable
+local dragging = false
+local dragInput, dragStart, startPos
+
+Square.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = true
+        dragStart = input.Position
+        startPos = Square.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+Square.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement then
+        dragInput = input
+    end
+end)
+
+game:GetService("UserInputService").InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        local delta = input.Position - dragStart
+        Square.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+end)
