@@ -8991,18 +8991,6 @@ M:AddToggle("Pegar Tushita No Automatico", _G.Autotushita,function(value)
     
 M:AddSeperator(" Sea Event ")
 
-spawn(function()
-    pcall(function()
-        while wait() do
-            if game.Workspace._WorldOrigin.Locations:FindFirstChild('Frozen Dimension') then
-                FrozenIsland:Set('âœ…: DIMENSÃO DO LEVIATÃ ESTÁ SPAWNADA')
-            else
-                FrozenIsland:Set('âŒ: DIMENSÃO DO LEVIATÃ NÃO ESTÁ SPAWNADA')
-            end
-        end
-    end)
-end)
-
 M:AddToggle("MATAR TERRORSHARK",_G.Makori_gay,function(value)
 _G.bjirTerrorshark = value
 StopTween(_G.bjirTerrorshark)
@@ -9615,9 +9603,9 @@ end)
     pcall(function()
         while wait() do
             if game.Workspace._WorldOrigin.Locations:FindFirstChild('Frozen Dimension') then
-                FrozenIsland:Set('🟢: Frozen Dimension Spawning')
+                FrozenIsland:Set('🟢: Leviatã Spawnado')
             else
-                FrozenIsland:Set('🔴: Frozen Dimension Not Found')
+                FrozenIsland:Set('🔴: Leviatã não está por aqui')
             end
         end
     end)
@@ -9627,17 +9615,13 @@ spawn(function()
     pcall(function()
         while wait() do
             if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsunen Island') then
-                FaiFaoKai:Set('🦊: Kitsunen Spwan')
+                FaiFaoKai:Set('🦊: Kitsune Spwanada')
             else
-                FaiFaoKai:Set('🔴: Kitsunen Not Found')
+                FaiFaoKai:Set('🔴: Kitsune não está por aqui')
             end
         end
     end)
 end)
-
-M:AddButton("Set Speed Boat",function()
-        loadstring(Game:HttpGetAsync("https://raw.githubusercontent.com/Domadicoof/Domadicoof/bbf98b2996c542627a6f3d08f5b458306d0d1567/SetSpeedBoatscript"))()
-    end)
     
 FrozenIsland = M:AddLabel("")
      
@@ -9646,14 +9630,19 @@ FrozenIsland = M:AddLabel("")
     StopTween(_G.AutoFrozenDimension)
     end)
     
-    M:AddLabel("Esp Kitsunen Island in MiscTab At Seperator Esp Menu")
-    
     FaiFaoKai = M:AddLabel("")
     
-    M:AddToggle("Auto Kitsunen Island",_G.AutoFKitsune,function(value)
+    
+    M:AddToggle("Teleport para kitsune island",_G.AutoFKitsune,function(value)
     _G.AutoFKitsune = value
     StopTween(_G.AutoFKitsune)
     end)
+    
+    M:AddToggle("Coletar Azure Ember",_G.AutoAzuerEmber,function(value)
+    _G.AutoAzuerEmber = value
+    StopTween(_G.AutoAzuerEmber)
+    end)
+    
           spawn(function()
             while wait() do
                 if _G.AutoFrozenDimension then
@@ -9667,25 +9656,47 @@ FrozenIsland = M:AddLabel("")
         end)
         
         spawn(function()
-            while wait() do
-                if _G.AutoFKitsune then
-                    pcall(function()
-                        if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
-                            topos(game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island').HumanoidRootPart.CFrame * CFrame.new(0,100,0))
+               local kitsuneIsland
+               while not kitsuneIsland do
+               kitsuneIsland = game:GetService("Workspace").Map:FindFirstChild("KitsuneIsland")
+            wait(1)
+        end
+        while wait() do
+            if _G.AutoFKitsune then
+				local shrineActive = kitsuneIsland:FindFirstChild("ShrineActive")
+				if shrineActive then
+						for _, v in pairs(shrineActive:GetDescendants()) do
+                            if v:IsA("BasePart") and v.Name:find("NeonShrinePart") then
+                                topos(v.CFrame)
+                            end
+                            end
                         end
-                    end)
+                    end
+                end
+            end)
+        
+    spawn(function()
+        pcall(function()
+            while wait() do
+                if _G.AutoAzuerEmber then
+                    if game:GetService("Workspace"):FindFirstChild("AttachedAzureEmber") then
+                    topos(game:GetService("Workspace"):WaitForChild("EmberTemplate"):FindFirstChild("Part").CFrame)
+                    end
                 end
             end
         end)
+    end)
+
+                          
         
-    M:AddToggle("Send Notification If Kitsunen Island Spwan",_G.KisuneWarn,function(value)
+    M:AddToggle("notificador de kitsune island",_G.KisuneWarn,function(value)
     _G.KisuneWarn = value
     end)
     
 --Notfication-Sound  
 local notification = Instance.new("Sound")
 notification.Parent = game:GetService("SoundService")
-notification.SoundId = "rbxassetid://9086208751" --sound id
+notification.SoundId = "rbxassetid://15882149221" --sound id
 notification.Volume = 5 --ระวังหูแตก
 
     spawn(function()
@@ -9695,9 +9706,9 @@ notification.Volume = 5 --ระวังหูแตก
                     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
                         wait(5)
                     game.StarterGui:SetCore("SendNotification", {
-                        Icon = "http://www.roblox.com/asset/?id=12523036534";
-                        Title = "Domadic Notification", 
-                        Text = "Kitsunen Is Spawn";
+                        Icon = "http://www.roblox.com/asset/?id=15882149221";
+                        Title = "Gomu hub Notification", 
+                        Text = "Kitsune Spawnada 🦊";
                     notification:Play()
                     })
                     end
