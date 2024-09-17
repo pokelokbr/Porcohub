@@ -107,180 +107,47 @@ end)
 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/pokelokbr/Porcohub/main/v91'))() 
 
-getgenv().Setting = {
-    ["Team"] = "Pirates", --Marines,Pirates
-    ["Webhook"] = {
-        ["Enabled"] = true,
-        ["Url Webhook"] = "Webhook Here", --Your Url
-    },
-    ["Misc"] = {
-        ["AutoBuyRandomandStoreFruit"] = true,
-        ["AutoBuySurprise"] = true,
-    },
-    ["SafeZone"] = {
-        ["Enable"] = true,
-        ["LowHealth"] = 4500,
-        ["MaxHealth"] = 5000,
-        ["Teleport Y"] = 2000
-    },
-    ["Race V4"] = {
-        ["Enable"] = true,
-    },
-    ["Invisible"] = false,
-    ["White Screen"] = false,
-    AutoConfigMelee = true,
-    AutoConfigSword = true,
-    AutoConfigFruit = true,
-    ["LimitServerHop"] ={
-        Enable = false,
-        Time = 600,
-    },
-    ["Position Config"] = {
-        Mode = "Default",-- You Can Create Your Own Mode By Making An Index In The Table Like Custom
-        Tween = true, -- If false then it will teleport when near target
-        SkyTween = false, -- Tweening In The Sky Till You Are Near The Player, Recommended For Using Gun Method
-        Spin = false,
-        ["Default"] = {
-            DistanceFromPlayer = {
-                x = 0, y = 0, z = 0,
-            }
-        },
-        ["Custom"] = {
-            DistanceFromPlayer = {
-                x = 0, y = 3, z = 0
-            }
-        }
-    },
-    ["Panel"] = {
-        ["Enabled"] = false,
-        ["IgnoreSelfChat"] = false,
-    },
-    ["ChatKill"] = {
-        Enable = true,
-        Chat = {
-            ""
-        },
-    },
-    ["Mention"] = {
+getgenv().Configs = {
+    ["Team"] = "Pirates", -- Pirates/Marines
+    ["Auto Ken"] = true,
+    ["Auto Buso"] = true,
+    ["Auto turn on race v3"] = true,
+    ["Auto turn on race v4"] = true,
+    ["FPS Boost"] = false,
+    ["Click Time"] = 0.2,
+    ["Bypass TP"] = true,
+    ["Chat"] = {
         ["Enable"] = false,
-        ["Id"] = "everyone", -- You Can Replace With Your Id (not your discord Name)
-        ["EveryBounty"] = 10000,
+        ["Message"] = {""}, -- Input your message here
     },
-    ["FpsLock"] = {
+    ["Run When Low Health"] = {
         ["Enable"] = true,
-        ["Cap"] = 30,
+        ["Health"] = 5500,
+        ["Come back"] = false
     },
-    ["LockBounty"] = {
-        ["Enable"] = true,
-        ["Cap"] = 30000000,
-    },
-    ["Click"] = {
-        ["Enable"] = true,
-        ["FastClick"] = true,
-        ["OnLowHealthDisable"] = false,
-        ["LowHealth"] = 3000,
-    },
-    ["Misc"] = {
-        ["AutoBuyRandomandStoreFruit"] = true,
-    },
-    ["Invisible"] = false, -- Self Explain
-    ["IgnoreFriends"] = false, --Server Hop When Your friends in your server
-    ["GunMethod"] = false, --Use Melee,Gun Will automaticly disable invisible for things
-    ["GunMethodSetting"] = {
-        LessSusKillTest=true,
-        StartHealth = 2000,
-        waittime=10,
-        EndHealth = 4000,
-    },
-   AutoConfigMelee = true,
-    AutoConfigSword = true,
-    AutoConfigFruit = true,
-    ["LimitServerHop"] ={
-        Enable = false,
-        Time = 600,
-    },
-    ["Position Config"] = {
-        Mode = "Default",-- You Can Create Your Own Mode By Making An Index In The Table Like Custom
-        Tween = true, -- If false then it will teleport when near target
-        SkyTween = false, -- Tweening In The Sky Till You Are Near The Player, Recommended For Using Gun Method
-        Spin = false,
-        ["Default"] = {
-            DistanceFromPlayer = {
-                x = 0, y = 0, z = 0,
-            }
-        },
-        ["Custom"] = {
-            DistanceFromPlayer = {
-                x = 0, y = 3, z = 0
-            }
-        }
-    },
-    ["Panel"] = {
-        ["Enabled"] = false,
-        ["IgnoreSelfChat"] = false,
-    },
-    ["ChatKill"] = {
-        Enable = true,
-        Chat = {
-            "MUITO FÁCIL KKK"
-        },
-    },
-    ["Mention"] = {
-        ["Enable"] = false,
-        ["Id"] = "everyone", -- You Can Replace With Your Id (not your discord Name)
-        ["EveryBounty"] = 10000,
-    },
-    ["FpsLock"] = {
-        ["Enable"] = true,
-        ["Cap"] = 30,
-    },
-    ["LockBounty"] = {
-        ["Enable"] = true,
-        ["Cap"] = 30000000,
-    },
-    ["Click"] = {
-        ["Enable"] = true,
-        ["FastClick"] = true,
-        ["OnLowHealthDisable"] = false,
-        ["LowHealth"] = 3000,
-    },
-    ["Misc"] = {
-        ["AutoBuyRandomandStoreFruit"] = true,
-        ["AutoBuySurprise"] = true,
-    },
-    ["Invisible"] = true, -- Self Explain
-    ["IgnoreFriends"] = true, --Server Hop When Your friends in your server
-    ["GunMethod"] = false, --Use Melee,Gun Will automaticly disable invisible for things
-    ["GunMethodSetting"] = {
-        LessSusKillTest=true,
-        StartHealth = 2000,
-        waittime=10,
-        EndHealth = 4000,
-    },
-    ["SpamSkill"] = false, -- Will use all skills as fast as possbile ignore holding skills
-    ["Weapons"] = { -- Select Weapon, Self Explain
+    ["Region"] = "Singapore", -- Singapore, United States, Germany, France, India, ??? ...
+    ["Weapons"] = {
         ["Melee"] = {
             ["Enable"] = true,
-            ["Delay"] = 3,
+            ["Delay"] = 1.75,
             ["Skills"] = {
                 ["Z"] = {
                     ["Enable"] = true,
-                    ["HoldTime"] = 0,
+                    ["HoldTime"] = 1,
                 },
-            [ "X"] = {
+                ["X"] = {
                     ["Enable"] = true,
                     ["HoldTime"] = 0,
                 },
-
                 ["C"] = {
                     ["Enable"] = true,
                     ["HoldTime"] = 0,
-                },
-            },
+                }
+            }
         },
-        ["Blox Fruit"] = {
-            ["Enable"] = true,
-            ["Delay"] = 4,
+        ["Fruit"] = {
+            ["Enable"] = false,
+            ["Delay"] = 1.8,
             ["Skills"] = {
                 ["Z"] = {
                     ["Enable"] = true,
@@ -290,62 +157,65 @@ getgenv().Setting = {
                     ["Enable"] = true,
                     ["HoldTime"] = 0,
                 },
-
                 ["C"] = {
-                    ["Enable"] = true,
+                    ["Enable"] = false,
                     ["HoldTime"] = 0,
                 },
                 ["V"] = {
-                    ["Enable"] = true,
+                    ["Enable"] = false,
                     ["HoldTime"] = 0,
                 },
                 ["F"] = {
                     ["Enable"] = false,
                     ["HoldTime"] = 0,
-                },
-            },
+                }
+            }
         },
         ["Sword"] = {
-            ["Enable"] = false,
-            ["Delay"] = 2,
+            ["Enable"] = true,
+            ["Delay"] = 1,
             ["Skills"] = {
                 ["Z"] = {
                     ["Enable"] = true,
-                    ["HoldTime"] = 1,
+                    ["HoldTime"] = 0.2,
                 },
                 ["X"] = {
                     ["Enable"] = true,
-                    ["HoldTime"] = 0,
-                },
-            },
+                    ["HoldTime"] = 0.5,
+                }
+            }
         },
         ["Gun"] = {
             ["Enable"] = false,
-            ["Delay"] = 0,
+            ["Delay"] = 0.5,
             ["Skills"] = {
                 ["Z"] = {
                     ["Enable"] = true,
-                    ["HoldTime"] = 1,
+                    ["HoldTime"] = 0,
                 },
                 ["X"] = {
                     ["Enable"] = true,
                     ["HoldTime"] = 0,
-                },
-            },
-        },
+                }
+            }
+        }
+    },
+    ["Theme"] = {
+        ["Enable"] = false,
+        ["Name"] = "Raiden", -- Hutao, Raiden, Ayaka, Yelan
+        ["Custom Theme"] = {
+            ["Enable"] = false,
+            ["Text Color"] = Color3.fromRGB(255, 255, 255),
+            ["Character Position"] = UDim2.new(0.563000023, 0, -0.174999997, 0)
+        }
+    },
+    ["Webhook"] = {
+        ["Enable"] = true,
+        ["Url"] = "",
+        ["Image"] = ""
     }
 }
-repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
-spawn(function()
-	while wait() do
-			game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-				if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-					game:GetService("TeleportService"):Teleport(game.PlaceId)
-				end
-			end)
-		end
-	end)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BountyShit.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/pokelokbr/Omini/main/pevas"))()
 
 
 
