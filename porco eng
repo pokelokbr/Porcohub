@@ -3713,7 +3713,7 @@ local Misc = Library:AddTab("Misc","4483345998")
 local Time = H:AddLabel("Executor Time");spawn(function() getgenv().Time = true;while true do wait(.1) UpdateTime() end end);function UpdateTime() local date = os.date("*t");local hour = (date.hour) % 24;local ampm = hour < 12 and "AM" or "PM";local timezone = string.format("%02i:%02i:%02i %s", ((hour -1) % 12) + 1, date.min, date.sec, ampm);local datetime = string.format("%02d/%02d/%04d", date.day, date.month, date.year);local LocalizationService = game:GetService("LocalizationService");local Players = game:GetService("Players");local player = Players.LocalPlayer;local name = player.Name;local result, code = pcall(function()   return LocalizationService:GetCountryRegionForPlayerAsync(player)  end);Time:Set(" : " .. timezone);Time:Set("Executor Time: " .. datetime .. " [ " .. code .. " ]");spawn(function() if getgenv().Time then pcall(function()  while wait() do  Time()  end end) end end) end
 
 H:AddLabel("Script By Pokas 🐗🐗")
-H:AddLabel("welcome to zoro hub")
+H:AddLabel("welcome to Gomu hub")
 
 H:AddSeperator("Youtube chanel")
 
@@ -5642,7 +5642,7 @@ spawn(function()
 						game.StarterGui:SetCore("SendNotification", {
 							Title = "Notification", 
 							Text = "Not Have Superhuman" ,
-							Icon = "http://www.roblox.com/asset/?id=18412065021",
+							Icon = "http://www.roblox.com/asset/?id=15498317188",
 							Duration = 2.5
 						})
 					end
@@ -5654,7 +5654,7 @@ spawn(function()
 						game.StarterGui:SetCore("SendNotification", {
 							Title = "Notification", 
 							Text = "Not Have Death Step" ,
-							Icon = "http://www.roblox.com/asset/?id=18412065021",
+							Icon = "http://www.roblox.com/asset/?id=15498317188",
 							Duration = 2.5
 						})
 					end
@@ -5666,7 +5666,7 @@ spawn(function()
 						game.StarterGui:SetCore("SendNotification", {
 							Title = "Notification", 
 							Text = "Not Have SharkMan Karate" ,
-							Icon = "http://www.roblox.com/asset/?id=18412065021",
+							Icon = "http://www.roblox.com/asset/?id=15498317188",
 							Duration = 2.5
 						})
 					end
@@ -5678,7 +5678,7 @@ spawn(function()
 						game.StarterGui:SetCore("SendNotification", {
 							Title = "Notification", 
 							Text = "Not Have Electric Claw" ,
-							Icon = "http://www.roblox.com/asset/?id=18412065021",
+							Icon = "http://www.roblox.com/asset/?id=15498317188",
 							Duration = 2.5
 						})
 					end
@@ -5688,7 +5688,7 @@ spawn(function()
 								game.StarterGui:SetCore("SendNotification", {
 									Title = "Notification", 
 									Text = "Not Have Enough Material" ,
-									Icon = "http://www.roblox.com/asset/?id=18412065021",
+									Icon = "http://www.roblox.com/asset/?id=15498317188",
 									Duration = 2.5
 								})
 							else
@@ -5699,7 +5699,7 @@ spawn(function()
 						game.StarterGui:SetCore("SendNotification", {
 							Title = "Notification", 
 							Text = "Not Have Dragon Talon" ,
-							Icon = "http://www.roblox.com/asset/?id=18412065021",
+							Icon = "http://www.roblox.com/asset/?id=15498317188",
 							Duration = 2.5
 						})
 					end
@@ -6938,7 +6938,7 @@ wait(0.5)
 elseif state and (not findItem("Monster Magnet", 1) or not findItem("Terror Eyes", 2) and not findItem("Electric Wing", 8) and not findItem("Fool's Gold", 20) and not findItem("Shark Tooth", 10)) then
     _G.BjirAnchorCuy = false
     game.StarterGui:SetCore("SendNotification", {
-        Icon = "rbxassetid://18412065021",
+        Icon = "rbxassetid://15498317188",
         Title = "! WARNING !", 
         Text = "You need more materials \nto buy a Monster Magnet."
     })
